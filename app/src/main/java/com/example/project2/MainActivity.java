@@ -3,7 +3,9 @@ package com.example.project2;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Entity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -23,8 +25,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
+        mMainDisplay = binding.mainTitle;
+        mLoginButton = binding.mainLoginButton;
+        mCreateAccountButton = binding.mainCreateAccountButton;
 
-
+        mLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplication(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
