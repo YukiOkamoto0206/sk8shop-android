@@ -3,7 +3,9 @@ package com.example.project2;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
                 .UserDAO();
 
 
+        // Login
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,6 +64,11 @@ public class LoginActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                // Save userId at SharedPreference
+                                SharedPreferences sp = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sp.edit();
+                                editor.putInt(getString(R.string.preference_userid_key), user.getUserId());
+                                editor.commit();
                                 // Landing page
                                 Intent intent = new Intent(LoginActivity.this, LandingActivity.class);
                                 intent.putExtra("user_id", user.getUserId());
