@@ -3,7 +3,9 @@ package com.example.project2;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -49,10 +51,16 @@ public class LandingActivity extends AppCompatActivity {
         }
 
 
+        // Logout
         mLogoutButton = binding.landingLogout;
         mLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Delete userId at SharedPreference
+                SharedPreferences sp = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.remove(getString(R.string.preference_userid_key));
+                editor.commit();
                 Intent intent = new Intent(getApplication(), MainActivity.class);
                 startActivity(intent);
             }
