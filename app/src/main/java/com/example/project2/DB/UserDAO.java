@@ -6,8 +6,6 @@ import androidx.room.Query;
 
 import com.example.project2.User;
 
-import java.util.List;
-
 @Dao
 public interface UserDAO {
     @Insert
@@ -15,5 +13,8 @@ public interface UserDAO {
 
     @Query("SELECT * FROM " + AppDatabase.USERS_TABLE + " WHERE mUsername = :username and mPassword = :password")
     User login(String username, String password);
+
+    @Query("SELECT * FROM " + AppDatabase.USERS_TABLE + " WHERE mUserId = :userId")
+    User findUser(int userId);
 
 }
