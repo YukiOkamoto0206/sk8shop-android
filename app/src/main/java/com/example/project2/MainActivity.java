@@ -1,9 +1,10 @@
 package com.example.project2;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Entity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +32,19 @@ public class MainActivity extends AppCompatActivity {
         mMainDisplay = binding.mainTitle;
         mLoginButton = binding.mainLoginButton;
         mCreateAccountButton = binding.mainCreateAccountButton;
+
+        /**
+         * Check if the user is already logged in.
+         * @ True -> Take to Landing Page
+         * @ False -> Nothing
+         */
+        SharedPreferences sp = getApplicationContext().getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        int sharedPrefUserId = sp.getInt(getString(R.string.preference_userid_key), -1);
+        if (sharedPrefUserId != -1) {
+            Intent intent = new Intent(getApplication(), LandingActivity.class);
+            intent.putExtra("user_id", sharedPrefUserId);
+            startActivity(intent);
+        }
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
