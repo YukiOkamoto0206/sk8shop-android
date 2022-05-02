@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         int sharedPrefUserId = sp.getInt(getString(R.string.preference_userid_key), -1);
         if (sharedPrefUserId != -1) {
             Intent intent = new Intent(getApplication(), LandingActivity.class);
-            intent.putExtra("user_id", sharedPrefUserId);
+            intent.putExtra(getString(R.string.intent_userid), sharedPrefUserId);
             startActivity(intent);
         }
 

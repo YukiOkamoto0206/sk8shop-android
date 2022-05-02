@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                                 editor.commit();
                                 // Landing page
                                 Intent intent = new Intent(LoginActivity.this, LandingActivity.class);
-                                intent.putExtra("user_id", user.getUserId());
+                                intent.putExtra(getString(R.string.intent_userid), user.getUserId());
                                 startActivity(intent);
                             }
                         });

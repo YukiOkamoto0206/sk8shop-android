@@ -33,7 +33,8 @@ public class LandingActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mUsername = binding.landingUsername;
-        int userId = getIntent().getIntExtra("user_id", 0);
+        // Get userId from LastPage(MainActivity/LoginActivity)
+        int userId = getIntent().getIntExtra(getString(R.string.intent_userid), 0);
 
         mUserDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME)
                 .allowMainThreadQueries()
