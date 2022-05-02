@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.example.project2.DB.AppDatabase;
 import com.example.project2.DB.UserDAO;
 import com.example.project2.databinding.ActivityLoginBinding;
-import com.example.project2.databinding.ActivityMainBinding;
 
 public class LoginActivity extends AppCompatActivity {
     EditText mUsernameEditText;
@@ -64,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                             public void run() {
                                 // Landing page
                                 Intent intent = new Intent(LoginActivity.this, LandingActivity.class);
-                                intent.putExtra("name", user.getUsername());
+                                intent.putExtra("user_id", user.getUserId());
                                 startActivity(intent);
                             }
                         });
