@@ -1,7 +1,6 @@
 package com.example.project2;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +12,7 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.example.project2.DB.AppDatabase;
+import com.example.project2.DB.Database;
 import com.example.project2.DB.UserDAO;
 import com.example.project2.databinding.ActivityCreateAccountBinding;
 
@@ -39,10 +38,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         mCreatePassword = binding.createPassword;
         mCreateButton = binding.createButton;
 
-        mUserDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME)
-                .allowMainThreadQueries()
-                .build()
-                .UserDAO();
+        mUserDAO = Database.getDatabase(getApplicationContext());
 
         mIsAdminSwitch = binding.switchAdmin;
         mIsAdminSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

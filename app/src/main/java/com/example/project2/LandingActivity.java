@@ -1,7 +1,6 @@
 package com.example.project2;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.project2.DB.AppDatabase;
+import com.example.project2.DB.Database;
 import com.example.project2.DB.UserDAO;
 import com.example.project2.databinding.ActivityLandingBinding;
 
@@ -37,10 +36,7 @@ public class LandingActivity extends AppCompatActivity {
         // Get userId from LastPage(MainActivity/LoginActivity)
         int userId = getIntent().getIntExtra(USER_ID_KEY, 0);
 
-        mUserDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME)
-                .allowMainThreadQueries()
-                .build()
-                .UserDAO();
+        mUserDAO = Database.getDatabase(getApplicationContext());
 
         User user = mUserDAO.findUser(userId);
         mUsername.setText(user.getUsername());

@@ -1,7 +1,6 @@
 package com.example.project2;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.project2.DB.AppDatabase;
+import com.example.project2.DB.Database;
 import com.example.project2.DB.UserDAO;
 import com.example.project2.databinding.ActivityLoginBinding;
 
@@ -36,11 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         mPasswordEditText = binding.loginPassword;
         mLoginButton = binding.loginButton;
 
-        mUserDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME)
-                .allowMainThreadQueries()
-                .build()
-                .UserDAO();
-
+        mUserDAO = Database.getDatabase(getApplicationContext());
 
         // Login
         mLoginButton.setOnClickListener(new View.OnClickListener() {
