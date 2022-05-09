@@ -16,6 +16,8 @@ import com.example.project2.DB.UserDAO;
 import com.example.project2.databinding.ActivityLandingBinding;
 
 public class LandingActivity extends AppCompatActivity {
+    private static final String USER_ID_KEY = "com.example.project2.userIdKey";
+
     TextView mUsername;
     Button mAdminButton;
     Button mLogoutButton;
@@ -34,7 +36,7 @@ public class LandingActivity extends AppCompatActivity {
 
         mUsername = binding.landingUsername;
         // Get userId from LastPage(MainActivity/LoginActivity)
-        int userId = getIntent().getIntExtra(getString(R.string.intent_userid), 0);
+        int userId = getIntent().getIntExtra(USER_ID_KEY, 0);
 
         mUserDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME)
                 .allowMainThreadQueries()
@@ -62,9 +64,15 @@ public class LandingActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sp.edit();
                 editor.remove(getString(R.string.preference_userid_key));
                 editor.commit();
-                Intent intent = new Intent(getApplication(), MainActivity.class);
+                Intent intent = MainActivity.intentFactory(getApplicationContext());
                 startActivity(intent);
             }
         });
+    }
+
+    public static Intent intentFactory(Context context, int userId) {
+        Intent intent = new Intent(context, LandingActivity.class);
+        intent.putExtra(USER_ID_KEY, userId);
+        return intent;
     }
 }

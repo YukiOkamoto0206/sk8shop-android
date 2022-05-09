@@ -41,15 +41,14 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sp = getApplicationContext().getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         int sharedPrefUserId = sp.getInt(getString(R.string.preference_userid_key), -1);
         if (sharedPrefUserId != -1) {
-            Intent intent = new Intent(getApplication(), LandingActivity.class);
-            intent.putExtra(getString(R.string.intent_userid), sharedPrefUserId);
+            Intent intent = LandingActivity.intentFactory(getApplicationContext(), sharedPrefUserId);
             startActivity(intent);
         }
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplication(), LoginActivity.class);
+                Intent intent = LoginActivity.intentFactory(getApplicationContext());
                 startActivity(intent);
             }
         });
@@ -57,9 +56,15 @@ public class MainActivity extends AppCompatActivity {
         mCreateAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplication(), CreateAccountActivity.class);
+                Intent intent = CreateAccountActivity.intentFactory(getApplicationContext());
                 startActivity(intent);
             }
         });
+    }
+
+    // Change the activity to MainActivity
+    public static Intent intentFactory(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        return intent;
     }
 }

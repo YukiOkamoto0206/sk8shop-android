@@ -3,6 +3,7 @@ package com.example.project2;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -83,5 +84,10 @@ public class CreateAccountActivity extends AppCompatActivity {
         if (user.getUsername().isEmpty() || user.getPassword().isEmpty()) {
             return false;
         } else return true;
+    }
+
+    public static Intent intentFactory(Context context) {
+        Intent intent = new Intent(context, CreateAccountActivity.class);
+        return intent;
     }
 }

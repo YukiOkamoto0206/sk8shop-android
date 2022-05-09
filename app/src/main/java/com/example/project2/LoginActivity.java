@@ -70,8 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                                 editor.putInt(getString(R.string.preference_userid_key), user.getUserId());
                                 editor.commit();
                                 // Landing page
-                                Intent intent = new Intent(LoginActivity.this, LandingActivity.class);
-                                intent.putExtra(getString(R.string.intent_userid), user.getUserId());
+                                Intent intent = LandingActivity.intentFactory(getApplicationContext(), user.getUserId());
                                 startActivity(intent);
                             }
                         });
@@ -79,5 +78,10 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public static Intent intentFactory(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        return intent;
     }
 }
