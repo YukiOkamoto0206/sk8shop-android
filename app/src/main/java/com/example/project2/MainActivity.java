@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -38,9 +37,8 @@ public class MainActivity extends AppCompatActivity {
          * @ True -> Take to Landing Page
          * @ False -> Nothing
          */
-        SharedPreferences sp = getApplicationContext().getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        int sharedPrefUserId = sp.getInt(getString(R.string.preference_userid_key), -1);
-        if (sharedPrefUserId != -1) {
+        int sharedPrefUserId = PrefUtils.getUserIdFromSharedPreference(getApplicationContext());
+        if (sharedPrefUserId != PrefUtils.DEFAULT_USER_ID) {
             Intent intent = LandingActivity.intentFactory(getApplicationContext(), sharedPrefUserId);
             startActivity(intent);
         }
