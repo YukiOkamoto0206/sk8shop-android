@@ -44,6 +44,13 @@ public class LandingActivity extends AppCompatActivity {
         mAdminButton = binding.landingAdmin;
         if (user.isAdmin()) {
             mAdminButton.setVisibility(View.VISIBLE);
+            mAdminButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = AdminActivity.intentFactory(getApplicationContext());
+                    startActivity(intent);
+                }
+            });
         } else {
             mAdminButton.setVisibility(View.INVISIBLE);
         }
