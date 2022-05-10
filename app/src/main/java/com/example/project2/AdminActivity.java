@@ -25,7 +25,7 @@ import com.example.project2.databinding.ActivityAdminBinding;
  */
 
 /**
- * AdminActivity > SectionPagerAdapter > PlaceholderFragment > PageViewModel
+ * AdminActivity > SectionPagerAdapter > Fragment |||>>> dont use anymore PlaceholderFragment > PageViewModel
  */
 
 public class AdminActivity extends AppCompatActivity {
