@@ -51,4 +51,12 @@ public class User {
     public void setAdmin(boolean admin) {
         mIsAdmin = admin;
     }
+
+    @Override
+    public String toString() {
+        return  "Id:    " + mUserId + "\n" +
+                "Name:  " + mUsername + "\n" +
+                "Status " + (this.isAdmin() ? "admin" : "user") + "\n" +
+                "====================\n";
+    }
 }
