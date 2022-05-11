@@ -54,8 +54,8 @@ public class User {
 
     @Override
     public String toString() {
-        return "Id:    " + mUserId + "\n" +
-                "Name:  " + mUsername + "\n" +
-                "Status " + (this.isAdmin() ? "admin" : "user");
+        return "Id:           " + mUserId + "\n" +
+                "Name:    " + mUsername + "\n" +
+                "Status:   " + (this.isAdmin() ? "admin" : "user");
     }
 }
