@@ -47,7 +47,7 @@ public class LandingActivity extends AppCompatActivity {
             mAdminButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = AdminActivity.intentFactory(getApplicationContext());
+                    Intent intent = AdminActivity.intentFactory(getApplicationContext(), userId);
                     startActivity(intent);
                 }
             });

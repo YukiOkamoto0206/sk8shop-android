@@ -11,8 +11,6 @@ import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.example.project2.ui.main.SectionsPagerAdapter;
@@ -29,6 +27,7 @@ import com.example.project2.databinding.ActivityAdminBinding;
  */
 
 public class AdminActivity extends AppCompatActivity {
+    private static final String USER_ID_KEY = "com.example.project2.userIdKey";
 
     private ActivityAdminBinding binding;
 
@@ -39,8 +38,13 @@ public class AdminActivity extends AppCompatActivity {
         binding = ActivityAdminBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // Pass userId to Fragment
+        int userId = getIntent().getIntExtra(USER_ID_KEY, 0);
+        Bundle args = new Bundle();
+        args.putInt("USER_ID_KEY_FROM_ADMIN_ACTIVITY", userId);
+
         // Defined there are two Tabs in this Activity
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager(), args);
 
         ViewPager viewPager = binding.viewPager;
         viewPager.setAdapter(sectionsPagerAdapter);
@@ -57,8 +61,9 @@ public class AdminActivity extends AppCompatActivity {
         });
     }
 
-    public static Intent intentFactory(Context context) {
+    public static Intent intentFactory(Context context, int userId) {
         Intent intent = new Intent(context, AdminActivity.class);
+        intent.putExtra(USER_ID_KEY, userId);
         return intent;
     }
 }
