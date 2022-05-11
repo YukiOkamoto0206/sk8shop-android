@@ -10,6 +10,8 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.project2.DB.Database;
@@ -18,14 +20,14 @@ import com.example.project2.R;
 import com.example.project2.User;
 import com.example.project2.databinding.FragmentUsersBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UsersFragment extends Fragment {
-    TextView mTextView;
+    ListView mListView;
     UserDAO mUserDAO;
 
-    FragmentUsersBinding binding;
-
+    ArrayList<User> mArrayList;
 
     public UsersFragment() {
         // Required empty public constructor
@@ -43,19 +45,16 @@ public class UsersFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mTextView = (TextView) view.findViewById(R.id.userFragmentDisplay);
+        mListView = (ListView) view.findViewById(R.id.userFragmentDisplay);
         mUserDAO = Database.getDatabase(getContext());
-        List<User> usersList = mUserDAO.getAllUsers();
-        mTextView.setMovementMethod(new ScrollingMovementMethod());
-        if (usersList.size() >= 1) {
-            StringBuilder sb = new StringBuilder();
-            for (User user: usersList) {
-                sb.append(user.toString());
-            }
-            mTextView.setText(sb);
-        } else {
-            mTextView.setText("No users");
-        }
+        mArrayList = (ArrayList<User>) mUserDAO.getAllUsers();
+        userDisplay();
+    }
 
+    private void userDisplay() {
+        if (mArrayList.size() >= 1) {
+            ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, mArrayList);
+            mListView.setAdapter(arrayAdapter);
+        }
     }
 }
