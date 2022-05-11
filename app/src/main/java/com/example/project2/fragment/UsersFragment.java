@@ -58,7 +58,7 @@ public class UsersFragment extends Fragment {
                     return false;
                 }
                 mUserDAO.deleteUser(clickedUser);
-                Toast.makeText(getContext(), clickedUser.getUsername() + " Deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), clickedUser.getUsername() + " is deleted", Toast.LENGTH_SHORT).show();
                 refreshPage();
                 return true;
             }
