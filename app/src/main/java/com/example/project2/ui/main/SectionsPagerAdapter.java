@@ -1,6 +1,7 @@
 package com.example.project2.ui.main;
 
 import android.content.Context;
+import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -21,10 +22,12 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.tab_users, R.string.tab_items};
     private final Context mContext;
+    private Bundle mArgs;
 
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
+    public SectionsPagerAdapter(Context context, FragmentManager fm, Bundle args) {
         super(fm);
         mContext = context;
+        mArgs = args;
     }
 
     @Override
@@ -34,6 +37,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         switch (position) {
             case 0:
                 fragment = new UsersFragment();
+                fragment.setArguments(mArgs);
                 break;
             case 1:
                 fragment = new ItemsFragment();
