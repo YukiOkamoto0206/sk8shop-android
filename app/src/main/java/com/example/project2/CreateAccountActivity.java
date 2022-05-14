@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.project2.DB.Database;
 import com.example.project2.DB.UserDAO;
+import com.example.project2.Entity.User;
 import com.example.project2.databinding.ActivityCreateAccountBinding;
 
 public class CreateAccountActivity extends AppCompatActivity {

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.project2.DB.Database;
 import com.example.project2.DB.UserDAO;
+import com.example.project2.Entity.User;
 import com.example.project2.databinding.ActivityMainBinding;
 
 import java.util.List;

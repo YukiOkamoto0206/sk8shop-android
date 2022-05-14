@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.example.project2.DB.Database;
 import com.example.project2.DB.UserDAO;
 import com.example.project2.R;
-import com.example.project2.User;
+import com.example.project2.Entity.User;
 
 import java.util.ArrayList;
 
