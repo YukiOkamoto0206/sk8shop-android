@@ -12,6 +12,7 @@ import com.example.project2.Entity.User;
 public abstract class AppDatabase extends RoomDatabase {
     public static final String DATABASE_NAME = "Users.db";
     public static final String USERS_TABLE = "users_db";
+    public static final String ITEMS_TABLE = "items_db";
 
     private static volatile AppDatabase instance;
     private static final Object LOCK = new Object();
