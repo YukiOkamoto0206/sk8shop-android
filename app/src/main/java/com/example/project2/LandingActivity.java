@@ -17,6 +17,7 @@ public class LandingActivity extends AppCompatActivity {
     private static final String USER_ID_KEY = "com.example.project2.userIdKey";
 
     TextView mUsername;
+    Button mSellButton;
     Button mAdminButton;
     Button mLogoutButton;
 
@@ -40,6 +41,15 @@ public class LandingActivity extends AppCompatActivity {
 
         User user = mUserDAO.findUser(userId);
         mUsername.setText(user.getUsername());
+
+        mSellButton = binding.landingSell;
+        mSellButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = SellActivity.intentFactory(getApplicationContext(), userId);
+                startActivity(intent);
+            }
+        });
 
         mAdminButton = binding.landingAdmin;
         if (user.isAdmin()) {
