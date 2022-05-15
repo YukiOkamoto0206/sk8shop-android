@@ -64,10 +64,8 @@ public class Item {
 
     @Override
     public String toString() {
-        return "ItemId: " + mItemId +
-                "Name: " + mName +
-                "DeckSize: " + mDeckSize +
-                "Price: $" + mPrice +
-                "Username: " + mUserId;
+        return "Deck: " + mName + "\n" +
+                "Size:  " + mDeckSize + "\n" +
+                "Price:  $" + mPrice;
     }
 }
