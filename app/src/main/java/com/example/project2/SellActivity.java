@@ -42,6 +42,16 @@ public class SellActivity extends AppCompatActivity {
         mUserId = getIntent().getIntExtra(USER_ID_KEY, -1);
         refreshPage();
 
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Item item = mArrayList.get(i);
+                int itemId = item.getItemId();
+                Intent intent = ModifySellActivity.intentFactory(getApplicationContext(), itemId);
+                startActivity(intent);
+            }
+        });
+
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -78,7 +88,6 @@ public class SellActivity extends AppCompatActivity {
 
     private void refreshPage() {
         mArrayList = (ArrayList<Item>) mUserDAO.getAllItemsByUserId(mUserId);
-        System.out.println(mArrayList);
         userDisplay();
     }
 }
