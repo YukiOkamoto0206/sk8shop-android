@@ -14,4 +14,11 @@
     <string name="tab_users">USERS</string>
     <string name="tab_items">ITEMS</string>
     <string name="buy">BUY</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sell">SELL</string>
+    <string name="deckname">Deck\'s name</string>
+    <string name="size">Size (ex: 8.0)</string>
+    <string name="price">Price (ex: 45)</string>
+    <string name="add">ADD</string>
 </resources>
