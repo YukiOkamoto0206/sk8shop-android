@@ -51,7 +51,6 @@ public class NewSellActivity extends AppCompatActivity {
                 String deckname = mDeckEditText.getText().toString();
                 String size = mSizeEditText.getText().toString();
                 String price = mPriceEditText.getText().toString();
-                System.out.println("size: " + size);
                 if (deckname.isEmpty() || size.isEmpty() || price.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "FIll all fields", Toast.LENGTH_SHORT).show();
                 } else {
