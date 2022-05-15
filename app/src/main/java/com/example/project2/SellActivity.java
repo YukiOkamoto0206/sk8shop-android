@@ -6,8 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.project2.DB.Database;
 import com.example.project2.DB.UserDAO;
@@ -39,6 +41,17 @@ public class SellActivity extends AppCompatActivity {
         mUserDAO = Database.getDatabase(getApplicationContext());
         mUserId = getIntent().getIntExtra(USER_ID_KEY, -1);
         refreshPage();
+
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Item item = mArrayList.get(i);
+                mUserDAO.deleteItem(item);
+                Toast.makeText(getApplicationContext(), item.getName() + " is deleted", Toast.LENGTH_SHORT).show();
+                refreshPage();
+                return true;
+            }
+        });
 
         mAddButton = binding.addIcon;
         mAddButton.setOnClickListener(new View.OnClickListener() {
