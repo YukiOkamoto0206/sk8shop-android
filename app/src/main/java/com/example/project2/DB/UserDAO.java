@@ -29,13 +29,13 @@ public interface UserDAO {
     List<User> getAllUsers();
 
     /* Item */
-//    @Insert
-//    void registerItem(Item... items);
-//
-//    @Delete
-//    void deleteItem(Item item);
+    @Insert
+    void registerItem(Item... items);
 
-//    @Query("SELECT * FROM " + AppDatabase.ITEMS_TABLE + " WHERE mUserId = :userId")
-//    List<Item>
+    @Delete
+    void deleteItem(Item item);
+
+    @Query("SELECT * FROM " + AppDatabase.ITEMS_TABLE + " WHERE mUserId = :userId")
+    List<Item> getAllItemsByUserId(int userId);
 
 }
