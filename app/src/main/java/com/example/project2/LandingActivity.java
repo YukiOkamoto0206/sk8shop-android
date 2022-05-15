@@ -19,6 +19,7 @@ public class LandingActivity extends AppCompatActivity {
 
     TextView mUsername;
     Button mBuyButton;
+    Button mSellButton;
     Button mAdminButton;
     Button mLogoutButton;
 
@@ -48,6 +49,15 @@ public class LandingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = BuyActivity.intentFactory(getApplicationContext(), userId);
+                startActivity(intent);
+            }
+        });
+
+        mSellButton = binding.landingSell;
+        mSellButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = SellActivity.intentFactory(getApplicationContext(), userId);
                 startActivity(intent);
             }
         });
