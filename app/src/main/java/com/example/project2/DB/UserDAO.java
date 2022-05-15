@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.project2.Entity.Item;
 import com.example.project2.Entity.User;
@@ -35,7 +36,14 @@ public interface UserDAO {
     @Delete
     void deleteItem(Item item);
 
+    @Update
+    void updateItem(Item item);
+
+    @Query("SELECT * FROM " + AppDatabase.ITEMS_TABLE + " WHERE mItemId = :itemId")
+    Item findItem(int itemId);
+
     @Query("SELECT * FROM " + AppDatabase.ITEMS_TABLE + " WHERE mUserId = :userId")
     List<Item> getAllItemsByUserId(int userId);
+
 
 }
