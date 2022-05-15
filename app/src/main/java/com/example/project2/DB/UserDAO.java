@@ -45,5 +45,7 @@ public interface UserDAO {
     @Query("SELECT * FROM " + AppDatabase.ITEMS_TABLE + " WHERE mUserId = :userId")
     List<Item> getAllItemsByUserId(int userId);
 
+    @Query("SELECT * FROM " + AppDatabase.ITEMS_TABLE)
+    List<Item> getAllItems();
 
 }
