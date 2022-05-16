@@ -19,6 +19,7 @@ public class LandingActivity extends AppCompatActivity {
 
     TextView mUsername;
     Button mBuyButton;
+    Button mHistoryOrderedButton;
     Button mSellButton;
     Button mAdminButton;
     Button mLogoutButton;
@@ -49,6 +50,15 @@ public class LandingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = BuyActivity.intentFactory(getApplicationContext(), userId);
+                startActivity(intent);
+            }
+        });
+
+        mHistoryOrderedButton = binding.landingHistory;
+        mHistoryOrderedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = ModifyBuyActivity.intentFactory(getApplicationContext(), userId);
                 startActivity(intent);
             }
         });
