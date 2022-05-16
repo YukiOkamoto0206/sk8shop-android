@@ -48,4 +48,6 @@ public interface UserDAO {
     @Query("SELECT * FROM " + AppDatabase.ITEMS_TABLE)
     List<Item> getAllItems();
 
+    @Query("SELECT * FROM " + AppDatabase.ITEMS_TABLE + " WHERE mIsPurchased = 0")
+    List<Item> getUnPurchasedItems();
 }

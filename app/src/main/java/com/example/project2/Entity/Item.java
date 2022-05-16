@@ -14,12 +14,22 @@ public class Item {
     private double mDeckSize;
     private double mPrice;
     private int mUserId;
+    private boolean mIsPurchased;
 
     public Item(String name, double deckSize, double price, int userId) {
         mName = name;
         mDeckSize = deckSize;
         mPrice = price;
         mUserId = userId;
+        mIsPurchased = false;
+    }
+
+    public boolean isPurchased() {
+        return mIsPurchased;
+    }
+
+    public void setIsPurchased(boolean purchased) {
+        mIsPurchased = purchased;
     }
 
     public int getItemId() {
