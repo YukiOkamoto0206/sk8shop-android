@@ -1,9 +1,4 @@
-Yuki Okamoto
-Project 02
-CST 338
-
-
-# [Android Application: Skateboard market]
+# Android Application: Skateboard market
 
 This application is selling and purchasing skateboard.
 
